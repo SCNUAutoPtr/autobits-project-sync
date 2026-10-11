@@ -45,7 +45,7 @@ GitHub Issues 是唯一事实源。负责人、标签、里程碑、父子关系
 
 凭据仅保存在 GitHub Actions Secrets，不要提交到 Git 或发送到 Issue、PR、聊天。App 不需要 Contents、Actions 或 Issues 写权限；工作流检出本公共仓库使用独立的、只读 `GITHUB_TOKEN`。
 
-配置完成后，在 **Actions → Sync global issue board → Run workflow** 手动运行一次。工作流每 30 分钟定时同步，GitHub 调度可能延迟。未配置凭据时，工作流明确跳过同步，不会显示为已经同步。
+配置完成后，在 **Actions → Sync global issue board → Run workflow** 手动运行一次。工作流每 4 小时定时同步，GitHub 调度可能延迟。未配置凭据时，工作流明确跳过同步，不会显示为已经同步。
 
 GitHub 会在公共仓库连续 60 天没有仓库活动时自动停用定时工作流；如遇停用，在 Actions 中重新启用。日常检查可通过工作流运行记录核对最近一次真实同步。
 

@@ -3,7 +3,7 @@ name: Sync global issue board
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '0 */4 * * *'
 
 permissions:
   contents: read
