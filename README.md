@@ -47,6 +47,8 @@ GitHub Issues 是唯一事实源。负责人、标签、里程碑、父子关系
 
 配置完成后，在 **Actions → Sync global issue board → Run workflow** 手动运行一次。工作流每 30 分钟定时同步，GitHub 调度可能延迟。未配置凭据时，工作流明确跳过同步，不会显示为已经同步。
 
+GitHub 会在公共仓库连续 60 天没有仓库活动时自动停用定时工作流；如遇停用，在 Actions 中重新启用。日常检查可通过工作流运行记录核对最近一次真实同步。
+
 公共仓库的标准 GitHub-hosted runner 不占用私有仓库的 Actions 分钟配额。
 
 ## 同步边界
