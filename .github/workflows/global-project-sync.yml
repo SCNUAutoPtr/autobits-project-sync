@@ -20,17 +20,17 @@ jobs:
       - name: Check dedicated project credential
         id: credential
         env:
-          APP_ID: ${{ vars.GH_APP_ID }}
+          APP_CLIENT_ID: ${{ vars.GH_APP_CLIENT_ID }}
           APP_PRIVATE_KEY: ${{ secrets.GH_APP_PRIVATE_KEY }}
         run: |
-          if [ -n "$APP_ID" ] && [ -n "$APP_PRIVATE_KEY" ]; then
+          if [ -n "$APP_CLIENT_ID" ] && [ -n "$APP_PRIVATE_KEY" ]; then
             echo 'ready=true' >> "$GITHUB_OUTPUT"
           else
             echo 'ready=false' >> "$GITHUB_OUTPUT"
-            echo '自动同步尚未启用：请配置 GH_APP_ID（Variable）和 GH_APP_PRIVATE_KEY（Secret），并将 App 安装到组织全部仓库。' >> "$GITHUB_STEP_SUMMARY"
+            echo '自动同步尚未启用：请配置 GH_APP_CLIENT_ID（Variable）和 GH_APP_PRIVATE_KEY（Secret），并将 App 安装到组织全部仓库。' >> "$GITHUB_STEP_SUMMARY"
           fi
       - name: Checkout
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: main
           persist-credentials: false
@@ -41,9 +41,9 @@ jobs:
       - name: Create short-lived GitHub App installation token
         if: steps.credential.outputs.ready == 'true'
         id: app-token
-        uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349 # v2
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         with:
-          app-id: ${{ vars.GH_APP_ID }}
+          client-id: ${{ vars.GH_APP_CLIENT_ID }}
           private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
           owner: SCNUAutoPtr
           permission-issues: read

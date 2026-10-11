@@ -40,7 +40,7 @@ GitHub Issues 是唯一事实源。负责人、标签、里程碑、父子关系
 
 | 类型 | 名称 | 值 |
 | --- | --- | --- |
-| Variable | `GH_APP_ID` | App ID，非 Client ID 或 Installation ID |
+| Variable | `GH_APP_CLIENT_ID` | App 页面中的 Client ID |
 | Secret | `GH_APP_PRIVATE_KEY` | 完整 PEM private key |
 
 凭据仅保存在 GitHub Actions Secrets，不要提交到 Git 或发送到 Issue、PR、聊天。App 不需要 Contents、Actions 或 Issues 写权限；工作流检出本公共仓库使用独立的、只读 `GITHUB_TOKEN`。
